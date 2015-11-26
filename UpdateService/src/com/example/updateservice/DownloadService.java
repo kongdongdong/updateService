@@ -169,7 +169,7 @@ public class DownloadService extends Service{
 				File file = new File(DownloadService.DOWNLOAD_PATH,fileName);
 				raf = new RandomAccessFile(file, "rwd");
 				raf.seek(start);
-				int mFinished = 0;
+				long mFinished = 0;
 				//开始下载
 				if(conn.getResponseCode() == HttpStatus.SC_PARTIAL_CONTENT){
 					//LogUtil.i("下载开始了。。。");
@@ -187,6 +187,7 @@ public class DownloadService extends Service{
 						speed += len;
 						if(System.currentTimeMillis() - time > 1000){
 							time = System.currentTimeMillis();
+							
 							notifyNotification(mFinished,length);
 							Log.i(TAG, "mFinished=="+mFinished);
 							Log.i(TAG, "length=="+length);
@@ -253,9 +254,10 @@ public class DownloadService extends Service{
 		notificationManager.notify(R.layout.notification_item, notification);
     }
 	
-	private void notifyNotification(int percent,int length){
+	private void notifyNotification(long percent,long length){
+		
 		contentView.setTextViewText(R.id.tv_progress, (percent*100/length)+"%");
-        contentView.setProgressBar(R.id.progress, length,percent, false);
+        contentView.setProgressBar(R.id.progress, (int)length,(int)percent, false);
         notification.contentView = contentView;
         notificationManager.notify(R.layout.notification_item, notification);
 	}

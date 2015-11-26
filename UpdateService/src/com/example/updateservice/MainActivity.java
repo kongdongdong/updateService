@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 				Intent intent = new Intent(mContext,DownloadService.class);
-				intent.putExtra("url", "http://surveyapp.fy.chaoxing.com/app/LauncherDemo5.apk");
+				intent.putExtra("url", "http://gdown.baidu.com/data/wisegame/3b01550409c1ed1b/QQ_300.apk");
 				startService(intent);
 			}
 		});
