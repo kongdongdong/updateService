@@ -1,7 +1,8 @@
 # APK版本更新，软件下载更新，通知栏显示进度
 
 
-    
+    ![](http://i.imgur.com/aIf0s3r.gif)
+
 首先你要添加权限
 
     <uses-permission android:name="android.permission.INTERNET"/>
